@@ -9,7 +9,7 @@
     "node": ">=6.9.1"
   },
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "express": "^4.16.2",
