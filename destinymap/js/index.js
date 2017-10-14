@@ -32,19 +32,6 @@ function bingImageSearch(){
     });
 }
 
-function getPosition(){
-	var request = "http://dev.virtualearth.net/REST/v1/Locations?query=triund_himachal_pradesh&key="+map_key;
-	$.ajax({
-		url : request, 
-		data : "",
-		type : "GET",
-		success: function(data){
-			console.log(data);
-		},
-		error: function(err){
-			console.log(err);
-		}
-	});
-}
-getPosition();
+
+
 //bingImageSearch();
