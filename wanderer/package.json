@@ -1,0 +1,15 @@
+{
+  "name": "wanderlust",
+  "version": "1.0.0",
+  "description": "a webapp that inspires people to travel and explore awesome new destinations",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "author": "sourabhreddy medapati",
+  "license": "ISC",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "selenium-webdriver": "^3.6.0"
+  }
+}

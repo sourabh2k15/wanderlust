@@ -1,0 +1,7 @@
+1) https://www.npmjs.com/package/selenium-webdriver
+
+npm install selenium-webdriver
+
+You will need to download additional components to work with each of the major browsers. 
+The drivers for Chrome, Firefox, PhantomJS, Opera, and Microsoft's IE and Edge web browsers are all 
+standalone executables that should be placed on your system PATH
