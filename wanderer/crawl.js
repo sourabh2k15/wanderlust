@@ -2,12 +2,10 @@ var webdriver = require('selenium-webdriver');
 var promise = require('selenium-webdriver').promise;
 var fs = require("fs");
 
-var driver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
-
 var save_track = false;
 
 var start = 0;
-var end = 3;
+var end = -1;
 
 var elems;
 var spotsdata = {};
@@ -15,9 +13,11 @@ var query_source = "data/queries.json";
 var queries = fetchData(query_source);
 var output = "data/spots.json";
 
-console.log(queries[start]);
+end = queries.length;
 
 function getSpots(index) {
+    var driver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
+
     driver.get(queries[index][0]);
     var pendingElements = driver.findElements(webdriver.By.className('_Iho mlo-c'))
 
@@ -30,12 +30,14 @@ function getSpots(index) {
             var spots = processHTML(allHTML);
             spotsdata[queries[index][1]] = spots;
             console.log("processed " + index + "/" + queries.length + " queries");
-            if (index < end) getSpots(index + 1);
-            else {
-                putData(output, JSON.stringify(spotsdata), function() {
-                    console.log("written");
+            if (index < end) {
+                setTimeout(function() {
                     driver.close();
-                })
+                    getSpots(index + 1);
+                }, 5000);
+            } else {
+                addData(output, JSON.stringify(spotsdata));
+                driver.close();
             }
         });
     });
@@ -55,8 +57,12 @@ function fetchIndex(filepath) {
     return fs.readFileSync(filepath, "utf-8");
 }
 
+function addData(filepath, content){
+    fs.appendFileSync(filepath, "\n"+content);
+}
+
 function putData(filepath, content, callback) {
-    fs.writeFile(filepath, content, function(err) {
+    fs.writeFile(filepath, "\n"+content, function(err) {
         if (!err) callback();
         else console.log(err);
     });
@@ -93,7 +99,13 @@ function processHTML(allHTML) {
         }
 
         description = description.replace("amp;", "");
-        results.push([title, description]);
+        description = description.replace("\"", "'");
+        description = description.replace(/<\/?[^>]+(>|$)/g, "");
+       
+        if (description.indexOf('undefined') == -1 && description.indexOf("<") == -1 && description.indexOf("_") == -1)
+            results.push([title, description]);
+        else
+            results.push([title, ""]);
     }
 
     return results;
