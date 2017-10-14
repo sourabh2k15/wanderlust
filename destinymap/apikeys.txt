@@ -1,3 +1,14 @@
 azure - username - sourabreddy pass - qwerty123
 
 bing maps -  JZo1Uqz4Z9MlLYP5oPwu~VYDNW7mVzdzzBJDpm3A2xA~AvXLaoIboRB7L-3stqKgzYl0J5YRfaRHQWewd86ikXTNgtCCpFm7FJUVkEX7XQFS
+
+https://api.cognitive.microsoft.com/bing/v7.0/suggestions
+https://api.cognitive.microsoft.com/bing/v7.0/entities
+https://api.cognitive.microsoft.com/bing/v7.0/images
+https://api.cognitive.microsoft.com/bing/v7.0/news
+https://api.cognitive.microsoft.com/bing/v7.0/spellcheck
+https://api.cognitive.microsoft.com/bing/v7.0/videos
+https://api.cognitive.microsoft.com/bing/v7.0
+
+Key 1: 5acf393925124e37a57af73df43dfbf6
+Key 2: 100915def95243c39d296e67caa740fd
