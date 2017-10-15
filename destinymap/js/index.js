@@ -51,8 +51,8 @@ function loadMapScenario() {
                             imgs.push([urls[i]['contentUrl'], urls[i]['thumbnailUrl'], urls[i]['name']]);
                         }
                         
-                        console.log(imgs);
-                        var carousel = "<div class='container'><div class='top' id='title' >"+imgs[current][2]+"</div><div class='top'><div class='left'><img onClick = 'left()' src='https://cdn1.iconfinder.com/data/icons/media-controls/32/circle-play-512.png'/></div><div class='i'><img id='image' src="+imgs[current][1]+" /></div><div class='right'><img onClick='right()' src='https://cdn1.iconfinder.com/data/icons/media-controls/32/circle-play-512.png'/></div></div></div>";
+                        //console.log(imgs);
+                        var carousel = "<div class='container' style='width:400px'><div class='top' id='title' ><div style='width:120%;'>"+imgs[current][2]+"</div></div><div class='top'><div class='left'><img onClick = 'left()' src='https://cdn1.iconfinder.com/data/icons/media-controls/32/circle-play-512.png'/></div><div class='i'><img id='image' src="+imgs[current][1]+" /></div><div class='right'><img onClick='right()' src='https://cdn1.iconfinder.com/data/icons/media-controls/32/circle-play-512.png'/></div></div></div>";
 
                         infobox.setOptions({
                             htmlContent : carousel
@@ -69,6 +69,10 @@ function loadMapScenario() {
             }
         }
     });
+}
+
+function vanish(t){
+    t.style.hidden = true;
 }
 
 function left(){

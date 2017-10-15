@@ -7,6 +7,7 @@
 }
 
 .container{
+	border: 1px solid purple;
   padding: 2%;
   width:100%;
   max-width: 350px;
@@ -18,13 +19,12 @@
   width:100%; 
   color:purple;
   margin-bottom:2%;
-  text-align:center;
   font-weight:bold;
   float:left;
 }
 
 .left, .right{
-	cursor: pointer;
+  cursor: pointer;
   width:8%; 
   float:left;
 }
@@ -34,7 +34,7 @@
 }
 
 .left img{
-  -moz-transform: scale(-1, 1);
+ -moz-transform: scale(-1, 1);
 -webkit-transform: scale(-1, 1);
 -o-transform: scale(-1, 1);
 -ms-transform: scale(-1, 1);
@@ -46,7 +46,7 @@ transform: scale(-1, 1);
 }
 
 .i{
-	background: white;
+background: white;
   width:80%;
   float:left;
   border:3px solid white;
