@@ -24,8 +24,7 @@ end
 Now you atleast have the best spots in your list to choose from as opposed to before so I hope that increases the probability of having a more enjoyable trip and maybe discover entirely new experiences in a place nearby home ;) 
 
 ## Wanderer (1st part) 
-
-![wanderer demo](https://i.imgur.com/LO5LWkw.png)
+![wanderer_demo](https://media.giphy.com/media/d47INmanbCHchaBa/giphy.gif)
 
 Our webapp is divided into 3 parts. Wanderer is a web crawler written in **NodeJS+Selenium** that fetches the must-visit spots for every province in every country on the globe through the google search answer-box and Tripadvisor. One could also crawl Instagram images if data from aforementioned sources is scarse. It deals with collecting the data for the must visit spots for each country and for each province in those countries. These places would be used in the 2nd part of the app where the user can choose from these places to explore more. 
 
@@ -34,6 +33,8 @@ Challenges faced :
 Had to come up with novel strategies in order to extract relevant information from huge chunks of HTML. Learnt Selenium from scratch, how to emulate button clicks, execute async scripts on the page. 
 
 ## DestinyMap (2nd part)
+
+![destinymap demo](https://i.imgur.com/LO5LWkw.png)
 
 The user is provided a world map ( powered by Bing Maps API) with markers on the locations Wanderer had discovered. The user can click on a marker to get images for that location ( **Bing Image search API** used with some custom params). If the user is sold on that place we then guide the user how to get to that place in 3rd part. One could also use **Microsoft Cognitive Services API** to extract the features of the images and only pass on the ones satisying certain criteria pertaining to if they look aesthetic or not. For example, a black and white image or an image fully crowded with people doesn't contribute much to impress the user about the place whereas a good scenery, snow, sunset , sunrise such pics raise user interest levels.
 This app is the main user facing site and is **deployed on azure**. It is built using NodeJS+Express. 
