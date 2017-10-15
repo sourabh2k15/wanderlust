@@ -1,3 +1,5 @@
 {
-        "triund" : {"latitude": 32.2596, "longitude": 76.3565}
+        "triund" : {"latitude" : 32.2596, "longitude" : 76.3565},
+        "coorg"  : {"latitude" : 12.3375, "longitude" : 75.8069},
+        "mysore palace"  : {"latitude" : 12.3051, "longitude" : 76.6551}
 }

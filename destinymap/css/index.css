@@ -1,0 +1,57 @@
+*{
+	padding : 0;
+	margin : 0;
+	box-sizing: border-box;
+	font-size: 100%;
+	font-style: Segoe UI, Ubuntu;
+}
+
+.container{
+  padding: 2%;
+  width:100%;
+  max-width: 350px;
+  float:left;
+  background: white;
+}
+
+.container div.top{
+  width:100%; 
+  color:purple;
+  margin-bottom:2%;
+  text-align:center;
+  font-weight:bold;
+  float:left;
+}
+
+.left, .right{
+	cursor: pointer;
+  width:8%; 
+  float:left;
+}
+
+.left img, .right img{
+  width:90%;
+}
+
+.left img{
+  -moz-transform: scale(-1, 1);
+-webkit-transform: scale(-1, 1);
+-o-transform: scale(-1, 1);
+-ms-transform: scale(-1, 1);
+transform: scale(-1, 1);  
+}
+
+.left, .right{
+  padding-top:20%;
+}
+
+.i{
+	background: white;
+  width:80%;
+  float:left;
+  border:3px solid white;
+}
+
+.i img{
+  width:100%;
+}
