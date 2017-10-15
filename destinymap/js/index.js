@@ -5,6 +5,28 @@ function loadMapScenario() {
 	map = new Microsoft.Maps.Map(document.getElementById('myMap'), { 
 		credentials: map_key 
 	}); 
+
+    map.setOptions({
+        maxZoom: 12,
+        minZoom: 1
+    });
+
+    map.setView({
+        center: new Microsoft.Maps.Location(39.601579130, -42.810403254),
+        zoom: 3
+    });
+
+    getLocations(function(positions){
+        for(var position in positions){
+            if(positions.hasOwnProperty(position)){
+                var latitude = positions[position]['latitude']; 
+                var longitude = positions[position]['longitude'];
+                
+                var pushpin = new Microsoft.Maps.Pushpin({'latitude':latitude, 'longitude':longitude}, null);
+                map.entities.push(pushpin);
+            }
+        }
+    });
 }
 
 function bingImageSearch(){
@@ -32,6 +54,17 @@ function bingImageSearch(){
     });
 }
 
-
-
-//bingImageSearch();
+function getLocations(cb){
+    $.ajax({
+        url     : '/locations',
+        data    : {'name' : 'sourabh'},
+        method  : "GET",
+        success : function(data){
+            var positions = JSON.parse(data);
+            cb(positions);
+        },
+        error   : function(err){
+            console.log("error occurred!");
+        }
+    })
+}

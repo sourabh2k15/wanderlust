@@ -2,12 +2,15 @@ var express =  require('express');
 var app     =  express();
 var http    =  require('http').Server(app);
 var http2 = require('http');
+var bodyParser = require('body-parser');
 var port    =  process.env.PORT || 1337;
 var request = require('request');
+var fs = require("fs");
 
 var map_key = 'JZo1Uqz4Z9MlLYP5oPwu~VYDNW7mVzdzzBJDpm3A2xA~AvXLaoIboRB7L-3stqKgzYl0J5YRfaRHQWewd86ikXTNgtCCpFm7FJUVkEX7XQFS';
 
 app.use(express.static('destinymap'));
+app.use(bodyParser.json({ type: 'application/json' }));
 
 http.listen(port, function(){
 	console.log("Server running at http://localhost:%d", port);	
@@ -24,3 +27,10 @@ function getPosition(location, cb){
 	    else console.log(error);
 	});
 }
+
+app.get('/locations',function(req, res){
+	fs.readFile('data/locations.json', function(err, data){
+		var positions = JSON.parse(data.toString());
+		res.send(JSON.stringify(positions));
+	});
+})

@@ -9,8 +9,11 @@ var end = -1;
 
 var elems;
 var spotsdata = {};
-var query_source = "data/queries.json";
+var country_code = "IN";
+
+var query_source = "data/country/"+country_code+".json";
 var queries = fetchData(query_source);
+
 var output = "data/spots.json";
 
 end = queries.length;
@@ -18,7 +21,7 @@ end = queries.length;
 function getSpots(index) {
     var driver = new webdriver.Builder().withCapabilities(webdriver.Capabilities.chrome()).build();
 
-    driver.get(queries[index][0]);
+    driver.get(queries[index].name);
     var pendingElements = driver.findElements(webdriver.By.className('_Iho mlo-c'))
 
     pendingElements.then(function(elements) {
@@ -28,15 +31,13 @@ function getSpots(index) {
 
         promise.all(pendingHtml).then(function(allHTML) {
             var spots = processHTML(allHTML);
-            spotsdata[queries[index][1]] = spots;
             console.log("processed " + index + "/" + queries.length + " queries");
             if (index < end) {
-                setTimeout(function() {
-                    driver.close();
-                    getSpots(index + 1);
-                }, 5000);
+                driver.close();
+                getSpots(index + 1);
+                addData(output, JSON.stringify(spots));
             } else {
-                addData(output, JSON.stringify(spotsdata));
+                addData(output, JSON.stringify(spots));
                 driver.close();
             }
         });
